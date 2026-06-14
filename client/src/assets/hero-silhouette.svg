@@ -1,0 +1,55 @@
+<svg width="640" height="760" viewBox="0 0 640 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="hijabMain" x1="173" y1="108" x2="509" y2="652" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F04A23"/>
+      <stop offset="0.42" stop-color="#D33419"/>
+      <stop offset="1" stop-color="#8B140D"/>
+    </linearGradient>
+    <linearGradient id="hijabLight" x1="185" y1="154" x2="453" y2="560" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF8A4E"/>
+      <stop offset="1" stop-color="#DB3918"/>
+    </linearGradient>
+    <linearGradient id="hijabDeep" x1="268" y1="184" x2="488" y2="612" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9E150F"/>
+      <stop offset="1" stop-color="#71110C"/>
+    </linearGradient>
+    <radialGradient id="faceShade" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(274 252) rotate(50.77) scale(246.262 203.314)">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#E6EBEE"/>
+    </radialGradient>
+    <linearGradient id="abaya" x1="179" y1="528" x2="470" y2="738" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#26252B"/>
+      <stop offset="1" stop-color="#121218"/>
+    </linearGradient>
+  </defs>
+
+  <path d="M126 712C137 650 150 612 185 577C224 539 284 522 344 527C407 531 470 554 518 594C546 617 567 660 574 712H126Z" fill="url(#abaya)"/>
+
+  <path d="M191 125C253 58 356 28 435 63C504 95 531 170 544 259C556 340 544 430 527 493C515 538 496 575 474 614C445 664 402 698 346 713C313 722 278 718 249 700C200 671 171 621 153 568C134 510 125 439 125 362C125 274 138 185 191 125Z" fill="url(#hijabMain)"/>
+
+  <path d="M269 140C303 117 352 114 393 132C429 148 455 180 474 216C497 261 509 315 499 366C493 397 475 424 446 438C420 450 391 451 364 458C320 469 278 495 247 529C228 489 219 443 221 396C223 350 240 304 251 260C261 220 264 178 269 140Z" fill="url(#hijabDeep)"/>
+
+  <path d="M226 145C247 131 271 123 297 122C328 120 356 132 377 157C404 187 421 224 419 267C417 313 386 345 361 381C349 397 343 413 342 431C341 449 349 464 363 485C321 471 283 448 257 414C230 378 221 335 223 292C225 241 239 192 226 145Z" fill="url(#hijabLight)"/>
+
+  <ellipse cx="281" cy="271" rx="121" ry="156" fill="url(#faceShade)"/>
+
+  <path d="M198 179C215 157 235 144 264 138C245 171 241 209 245 250C250 294 265 338 264 384C263 416 252 447 228 474C214 449 204 422 197 392C186 348 183 295 184 247C186 221 189 199 198 179Z" fill="url(#hijabLight)"/>
+
+  <path d="M385 139C420 158 447 192 468 231C491 274 504 321 497 366C490 410 462 448 443 487C424 525 413 567 391 604C369 641 329 680 279 692C332 650 355 592 349 534C344 481 315 437 307 385C301 346 309 305 327 271C345 237 376 210 392 179C400 164 398 150 385 139Z" fill="url(#hijabMain)"/>
+
+  <path d="M356 106C400 117 435 148 454 185C428 163 395 153 363 154C320 156 288 178 251 196C234 205 217 210 198 211C205 174 223 143 251 123C282 101 319 96 356 106Z" fill="#97140E"/>
+
+  <path d="M421 80C453 101 476 135 487 174C497 208 498 243 493 278C489 245 483 213 470 183C459 158 442 135 424 116C410 102 403 90 421 80Z" fill="#C62012"/>
+
+  <path d="M233 456C267 437 305 429 342 432C391 436 430 455 458 492C422 480 384 475 349 478C309 482 273 494 238 520C222 491 218 464 233 456Z" fill="#A41810"/>
+
+  <path d="M205 520C252 503 300 501 350 509C408 518 455 543 492 585C440 567 389 556 341 554C292 552 246 560 198 580C187 555 188 536 205 520Z" fill="#CF3419"/>
+
+  <path d="M198 602C248 581 305 576 363 583C425 591 476 616 512 649C457 635 404 626 352 624C298 623 245 631 186 653C182 633 185 613 198 602Z" fill="#89150F"/>
+
+  <path d="M392 176C410 199 421 224 423 253C425 281 419 307 403 330" stroke="#82130F" stroke-width="8" stroke-linecap="round"/>
+  <path d="M406 282C409 312 404 340 390 366" stroke="#7A120E" stroke-width="7" stroke-linecap="round"/>
+  <path d="M230 468C266 449 309 442 350 446" stroke="#ED6440" stroke-width="10" stroke-linecap="round" opacity="0.75"/>
+  <path d="M211 534C258 519 311 518 362 525" stroke="#F16840" stroke-width="10" stroke-linecap="round" opacity="0.72"/>
+  <path d="M210 610C259 594 314 593 366 600" stroke="#E85836" stroke-width="9" stroke-linecap="round" opacity="0.64"/>
+</svg>

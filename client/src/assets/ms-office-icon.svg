@@ -1,0 +1,38 @@
+<svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path
+    d="M58 17H67.5C74.4036 17 80 22.5964 80 29.5V66.5C80 73.4036 74.4036 79 67.5 79H58V17Z"
+    fill="url(#office-right)"
+  />
+  <path
+    d="M56.8 25.3L31.9 35.8C29.5 36.8 27.9 39.1 27.9 41.7V68.1C27.9 71.5 31.4 73.8 34.6 72.5L56.8 63.3V25.3Z"
+    fill="url(#office-left)"
+  />
+  <path
+    d="M56.8 21.7V37L31.1 27.1C28.6 26.2 28.3 22.8 30.5 21.4L40.5 15C43.4 13.2 47.1 13.3 49.8 15.3L56.8 21.7Z"
+    fill="url(#office-top)"
+  />
+  <path
+    d="M56.8 59.4V74.1L49.3 80.6C46.6 82.9 42.8 83.4 39.5 81.8L30.2 77.2C27.8 76 27.7 72.6 30.1 71.3L56.8 59.4Z"
+    fill="url(#office-bottom)"
+  />
+  <defs>
+    <linearGradient id="office-right" x1="59.6" y1="17" x2="82.4" y2="76.8" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF9A00"/>
+      <stop offset="1" stop-color="#E85700"/>
+    </linearGradient>
+    <linearGradient id="office-left" x1="25.4" y1="66.7" x2="56.1" y2="26" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D04A9B"/>
+      <stop offset="0.52" stop-color="#EE2147"/>
+      <stop offset="1" stop-color="#8F0B0B"/>
+    </linearGradient>
+    <linearGradient id="office-top" x1="31.8" y1="27.6" x2="55.8" y2="18.2" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D54F9F"/>
+      <stop offset="0.45" stop-color="#E5234E"/>
+      <stop offset="1" stop-color="#7A0505"/>
+    </linearGradient>
+    <linearGradient id="office-bottom" x1="31.4" y1="77.7" x2="56.5" y2="61.5" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF2A54"/>
+      <stop offset="1" stop-color="#B50B17"/>
+    </linearGradient>
+  </defs>
+</svg>

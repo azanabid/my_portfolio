@@ -1,0 +1,177 @@
+<svg width="920" height="660" viewBox="0 0 920 660" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="42" y1="32" x2="864" y2="606" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFDFE"/>
+      <stop offset="1" stop-color="#FFF1F6"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(238 192) rotate(22.6) scale(274 242)">
+      <stop stop-color="#FFFFFF" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="desk" x1="460" y1="468" x2="460" y2="660" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF8FB"/>
+      <stop offset="1" stop-color="#F9E8EF"/>
+    </linearGradient>
+    <linearGradient id="frameWood" x1="330" y1="120" x2="632" y2="488" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EBC39D"/>
+      <stop offset="1" stop-color="#B9865D"/>
+    </linearGradient>
+    <linearGradient id="vase" x1="156" y1="316" x2="218" y2="534" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8D6DF"/>
+      <stop offset="1" stop-color="#E7AFBF"/>
+    </linearGradient>
+    <linearGradient id="book1" x1="312" y1="548" x2="528" y2="594" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ECAEBF"/>
+      <stop offset="1" stop-color="#D98E9F"/>
+    </linearGradient>
+    <linearGradient id="book2" x1="494" y1="520" x2="770" y2="572" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FDE7ED"/>
+      <stop offset="1" stop-color="#F3C8D6"/>
+    </linearGradient>
+    <linearGradient id="mug" x1="704" y1="334" x2="808" y2="524" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7B5BF"/>
+      <stop offset="1" stop-color="#DA7D8C"/>
+    </linearGradient>
+    <filter id="shadowSoft" x="58" y="68" width="794" height="534" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="12"/>
+      <feGaussianBlur stdDeviation="16"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.816 0 0 0 0 0.646 0 0 0 0 0.712 0 0 0 0.24 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_1" result="shape"/>
+    </filter>
+  </defs>
+
+  <rect width="920" height="660" rx="28" fill="url(#bg)"/>
+  <rect width="920" height="660" rx="28" fill="url(#glow)"/>
+
+  <rect y="470" width="920" height="190" fill="url(#desk)"/>
+
+  <g opacity="0.38">
+    <path d="M756 112C786 150 806 194 818 252" stroke="#F3D5DE" stroke-width="10" stroke-linecap="round"/>
+    <path d="M96 94C120 124 140 168 154 230" stroke="#F6DCE5" stroke-width="8" stroke-linecap="round"/>
+  </g>
+
+  <g filter="url(#shadowSoft)">
+    <path d="M300 546L462 546L518 602H350L300 546Z" fill="url(#book1)"/>
+    <rect x="298" y="538" width="222" height="22" rx="4" fill="#F1B9C9"/>
+    <rect x="298" y="560" width="222" height="40" rx="4" fill="#D995A5"/>
+    <rect x="540" y="524" width="266" height="56" rx="4" fill="url(#book2)"/>
+    <rect x="540" y="580" width="266" height="18" rx="4" fill="#E8BBC8"/>
+
+    <ellipse cx="180" cy="542" rx="112" ry="18" fill="#F2D5DE"/>
+    <path d="M104 350C104 314 132 286 168 286H192C228 286 256 314 256 350V470C256 516 220 554 174 554H186C140 554 104 516 104 470V350Z" fill="url(#vase)"/>
+    <path d="M126 320V496" stroke="#E8B9C8" stroke-width="4" stroke-linecap="round"/>
+    <path d="M144 308V512" stroke="#EEC4D0" stroke-width="4" stroke-linecap="round"/>
+    <path d="M162 300V518" stroke="#E7B1C0" stroke-width="4" stroke-linecap="round"/>
+    <path d="M180 296V520" stroke="#F0C6D2" stroke-width="4" stroke-linecap="round"/>
+    <path d="M198 300V516" stroke="#E8B5C4" stroke-width="4" stroke-linecap="round"/>
+    <path d="M216 310V500" stroke="#F0C7D3" stroke-width="4" stroke-linecap="round"/>
+
+    <g stroke="#6E482A" stroke-width="3.6" stroke-linecap="round">
+      <path d="M186 324C166 274 150 232 132 164"/>
+      <path d="M186 324C186 272 188 224 192 140"/>
+      <path d="M186 324C206 282 230 236 270 184"/>
+      <path d="M180 334C148 298 114 262 68 228"/>
+      <path d="M194 334C232 308 286 280 332 260"/>
+      <path d="M174 334C158 290 130 250 94 212"/>
+      <path d="M198 334C214 298 246 252 292 212"/>
+    </g>
+
+    <g fill="#6D7A44">
+      <ellipse cx="128" cy="164" rx="9" ry="5" transform="rotate(-26 128 164)"/>
+      <ellipse cx="190" cy="138" rx="9" ry="5" transform="rotate(20 190 138)"/>
+      <ellipse cx="268" cy="184" rx="9" ry="5" transform="rotate(38 268 184)"/>
+      <ellipse cx="70" cy="228" rx="9" ry="5" transform="rotate(-18 70 228)"/>
+      <ellipse cx="330" cy="262" rx="9" ry="5" transform="rotate(28 330 262)"/>
+      <ellipse cx="98" cy="212" rx="9" ry="5" transform="rotate(-42 98 212)"/>
+      <ellipse cx="294" cy="214" rx="9" ry="5" transform="rotate(38 294 214)"/>
+    </g>
+
+    <g fill="#F493A4">
+      <g>
+        <circle cx="132" cy="162" r="10"/>
+        <circle cx="121" cy="162" r="9"/>
+        <circle cx="143" cy="162" r="9"/>
+        <circle cx="132" cy="151" r="9"/>
+        <circle cx="132" cy="173" r="9"/>
+      </g>
+      <g>
+        <circle cx="190" cy="136" r="8"/>
+        <circle cx="181" cy="136" r="7"/>
+        <circle cx="199" cy="136" r="7"/>
+        <circle cx="190" cy="127" r="7"/>
+        <circle cx="190" cy="145" r="7"/>
+      </g>
+      <g>
+        <circle cx="270" cy="184" r="9"/>
+        <circle cx="260" cy="184" r="8"/>
+        <circle cx="280" cy="184" r="8"/>
+        <circle cx="270" cy="174" r="8"/>
+        <circle cx="270" cy="194" r="8"/>
+      </g>
+      <g>
+        <circle cx="70" cy="228" r="8"/>
+        <circle cx="61" cy="228" r="7"/>
+        <circle cx="79" cy="228" r="7"/>
+        <circle cx="70" cy="219" r="7"/>
+        <circle cx="70" cy="237" r="7"/>
+      </g>
+      <g>
+        <circle cx="328" cy="260" r="8"/>
+        <circle cx="319" cy="260" r="7"/>
+        <circle cx="337" cy="260" r="7"/>
+        <circle cx="328" cy="251" r="7"/>
+        <circle cx="328" cy="269" r="7"/>
+      </g>
+      <g>
+        <circle cx="96" cy="212" r="8"/>
+        <circle cx="87" cy="212" r="7"/>
+        <circle cx="105" cy="212" r="7"/>
+        <circle cx="96" cy="203" r="7"/>
+        <circle cx="96" cy="221" r="7"/>
+      </g>
+      <g>
+        <circle cx="294" cy="214" r="8"/>
+        <circle cx="285" cy="214" r="7"/>
+        <circle cx="303" cy="214" r="7"/>
+        <circle cx="294" cy="205" r="7"/>
+        <circle cx="294" cy="223" r="7"/>
+      </g>
+    </g>
+
+    <g fill="#FFD7E0" opacity="0.86">
+      <circle cx="129" cy="160" r="3"/>
+      <circle cx="188" cy="134" r="2.8"/>
+      <circle cx="267" cy="181" r="3"/>
+      <circle cx="68" cy="225" r="2.6"/>
+      <circle cx="326" cy="257" r="2.6"/>
+      <circle cx="94" cy="209" r="2.6"/>
+      <circle cx="292" cy="211" r="2.6"/>
+    </g>
+
+    <path d="M300 186L332 138H584L612 470H300V186Z" fill="#A36E45"/>
+    <path d="M332 138H584L566 156H314L332 138Z" fill="#E7BE98"/>
+    <path d="M300 186L314 156V484L300 470V186Z" fill="#8A5F3E"/>
+    <path d="M598 154L612 470H594L580 172L598 154Z" fill="#C3926A"/>
+    <path d="M334 164H564V446H334V164Z" fill="#FFFDFE"/>
+    <rect x="336" y="166" width="224" height="276" fill="#FFFDFC"/>
+
+    <text x="448" y="248" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" fill="#171616" letter-spacing="2">FOCUSED</text>
+    <text x="448" y="306" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" fill="#171616" letter-spacing="2">CREATIVE</text>
+    <text x="448" y="364" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" fill="#171616" letter-spacing="2">DISCIPLINED</text>
+    <text x="448" y="422" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" fill="#171616" letter-spacing="2">DETERMINED</text>
+    <path d="M448 456C454.6 444.8 472 447.4 472 462.2C472 475.2 457.2 482.8 448 495C438.8 482.8 424 475.2 424 462.2C424 447.4 441.4 444.8 448 456Z" fill="#F06A92"/>
+
+    <g>
+      <ellipse cx="700" cy="554" rx="112" ry="14" fill="#EFD2DC"/>
+      <rect x="666" y="336" width="132" height="190" rx="28" fill="url(#mug)"/>
+      <path d="M798 366C838 366 862 390 862 430C862 470 838 494 798 494" stroke="#E78D9C" stroke-width="18" stroke-linecap="round"/>
+      <path d="M678 348H786" stroke="#FFD7DE" stroke-width="8" stroke-linecap="round" opacity="0.72"/>
+    </g>
+  </g>
+
+  <text x="674" y="610" text-anchor="middle" font-family="Georgia, Times New Roman, serif" font-size="28" fill="#282226">Good ideas start</text>
+  <text x="674" y="646" text-anchor="middle" font-family="Georgia, Times New Roman, serif" font-size="28" fill="#282226">with creativity</text>
+</svg>
