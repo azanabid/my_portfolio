@@ -231,6 +231,7 @@ const heroButterflies = [
 
 const visibleHeroButterflies = heroButterflies.slice(0, 12)
 const resumeHref = `${import.meta.env.BASE_URL}azan-resume.pdf`
+const portfolioDriveHref = 'https://drive.google.com/drive/folders/15IQtowQuQqzZyGBiHqMmIXp21TyGHtFY?usp=drive_link'
 const fallbackContactEmail = 'azanabidkhawaja@gmail.com'
 const contactPhoneDisplay = '03354414787'
 const contactPhoneHref = 'tel:+923354414787'
@@ -306,11 +307,6 @@ function App() {
       window.removeEventListener('keydown', handleKeyDown)
     }
   }, [activeProject, contactOpen])
-
-  function openPortfolio() {
-    setMenuOpen(false)
-    scrollToSection('portfolio')
-  }
 
   function openContact() {
     setMenuOpen(false)
@@ -432,9 +428,14 @@ function App() {
               </span>
             </div>
             <div className="hero-actions">
-              <button type="button" className="btn primary" onClick={openPortfolio}>
+              <a
+                className="btn primary"
+                href={portfolioDriveHref}
+                target="_blank"
+                rel="noreferrer"
+              >
                 View My Work <ArrowRight size={17} />
-              </button>
+              </a>
               <a className="btn outline" href={resumeHref} download="Azan-Resume.pdf">
                 Download CV <Download size={16} />
               </a>
