@@ -9,3 +9,4 @@ dist/
 /_smtp_*
 !.env.example
 !**/.env.example
+!**/.env.*.example

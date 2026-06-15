@@ -1,9 +1,43 @@
-import 'dotenv/config'
+import fs from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 import express from 'express'
 import cors from 'cors'
+import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 import contactRouter from './routes/contact.js'
 import { getMailStatus } from './lib/smtpMailer.js'
+
+const currentDir = path.dirname(fileURLToPath(import.meta.url))
+
+function loadServerEnv() {
+  const requestedMode = process.env.NODE_ENV || 'development'
+  const envFiles = [
+    path.resolve(currentDir, '.env'),
+    path.resolve(currentDir, '.env.local'),
+    path.resolve(currentDir, `.env.${requestedMode}`),
+    path.resolve(currentDir, `.env.${requestedMode}.local`),
+  ]
+
+  const mergedValues = {}
+
+  for (const envFile of envFiles) {
+    if (!fs.existsSync(envFile)) continue
+    Object.assign(mergedValues, dotenv.parse(fs.readFileSync(envFile)))
+  }
+
+  for (const [key, value] of Object.entries(mergedValues)) {
+    if (process.env[key] === undefined) {
+      process.env[key] = value
+    }
+  }
+
+  if (!process.env.NODE_ENV) {
+    process.env.NODE_ENV = requestedMode
+  }
+}
+
+loadServerEnv()
 
 const app = express()
 const port = process.env.PORT || 5000
@@ -128,9 +162,6 @@ app.use((error, req, res, next) => {
 })
 
 if (process.env.NODE_ENV === 'production') {
-  const { default: path } = await import('path')
-  const { fileURLToPath } = await import('url')
-  const currentDir = path.dirname(fileURLToPath(import.meta.url))
   const clientDist = path.resolve(currentDir, '../client/dist')
 
   app.use(

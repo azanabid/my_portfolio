@@ -230,6 +230,10 @@ const heroButterflies = [
 ]
 
 const visibleHeroButterflies = heroButterflies.slice(0, 12)
+const apiBaseUrl = String(import.meta.env.VITE_API_BASE_URL || '').trim().replace(/\/$/, '')
+const contactDeliveryMode = String(import.meta.env.VITE_CONTACT_DELIVERY || 'api').trim().toLowerCase()
+const useMailtoOnlyContact = contactDeliveryMode === 'mailto'
+const contactApiUrl = apiBaseUrl ? `${apiBaseUrl}/api/contact` : '/api/contact'
 const resumeHref = `${import.meta.env.BASE_URL}azan-resume.pdf`
 const portfolioDriveHref = 'https://drive.google.com/drive/folders/15IQtowQuQqzZyGBiHqMmIXp21TyGHtFY?usp=drive_link'
 const fallbackContactEmail = 'azanabidkhawaja@gmail.com'
@@ -332,10 +336,20 @@ function App() {
     const formData = new FormData(form)
     const submission = Object.fromEntries(formData)
 
+    if (useMailtoOnlyContact) {
+      setNotice({
+        type: 'info',
+        text: 'This production site opens your email app directly for contact submissions.',
+        actionHref: buildMailtoHref(submission),
+        actionLabel: 'Open Email App',
+      })
+      return
+    }
+
     setSending(true)
     setNotice(null)
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch(contactApiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(submission),
