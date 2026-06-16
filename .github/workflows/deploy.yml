@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  actions: read
+  actions: write
   contents: read
   pages: write
   id-token: write
@@ -55,6 +55,51 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - name: Remove duplicate Pages artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import urllib.request
+
+          headers = {
+              "Accept": "application/vnd.github+json",
+              "Authorization": f"Bearer {os.environ['GH_TOKEN']}",
+              "X-GitHub-Api-Version": "2022-11-28",
+              "User-Agent": "github-actions",
+          }
+
+          repo = os.environ["REPO"]
+          run_id = os.environ["RUN_ID"]
+          artifacts_url = f"https://api.github.com/repos/{repo}/actions/runs/{run_id}/artifacts"
+
+          request = urllib.request.Request(artifacts_url, headers=headers)
+          with urllib.request.urlopen(request) as response:
+              payload = json.load(response)
+
+          artifacts = [
+              artifact
+              for artifact in payload.get("artifacts", [])
+              if artifact.get("name") == "github-pages" and not artifact.get("expired")
+          ]
+          artifacts.sort(key=lambda artifact: (artifact.get("created_at", ""), artifact.get("id", 0)), reverse=True)
+
+          print(f"Found {len(artifacts)} github-pages artifact(s)")
+
+          for artifact in artifacts[1:]:
+              delete_url = f"https://api.github.com/repos/{repo}/actions/artifacts/{artifact['id']}"
+              delete_request = urllib.request.Request(delete_url, headers=headers, method="DELETE")
+              with urllib.request.urlopen(delete_request) as response:
+                  print(f"Deleted duplicate artifact {artifact['id']} with status {response.status}")
+
+          if artifacts:
+              print(f"Keeping artifact {artifacts[0]['id']}")
+          PY
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
