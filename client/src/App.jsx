@@ -7,7 +7,6 @@ import {
   Coffee,
   Crown,
   Download,
-  ExternalLink,
   Film,
   GraduationCap,
   Heart,
@@ -933,9 +932,6 @@ function App() {
               {activeProject.caption}. This concept combines a clear visual hierarchy, a modern feminine
               palette and polished assets designed for real client delivery.
             </p>
-            <button type="button" className="btn primary" onClick={openContact}>
-              Start a similar project <ExternalLink size={15} />
-            </button>
           </article>
         </div>
       )}
