@@ -280,6 +280,21 @@ function buildMailtoHref(values, to = fallbackContactEmail) {
   return `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(`Portfolio inquiry: ${subject}`)}&body=${encodeURIComponent(body)}`
 }
 
+const quickContactMailtoHref = buildMailtoHref({
+  subject: 'Design project inquiry',
+  message: [
+    'Hello Azan Abid,',
+    '',
+    'I would like to discuss a design/prototyping project with you.',
+    '',
+    'Project details:',
+    'Timeline:',
+    'Budget:',
+    '',
+    'Thank you.',
+  ].join('\n'),
+})
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [filter, setFilter] = useState('All')
@@ -453,9 +468,9 @@ function App() {
               <a className="btn outline" href={resumeHref} download="Azan-Resume.pdf">
                 Download CV <Download size={16} />
               </a>
-              <button type="button" className="btn outline" onClick={openContact}>
+              <a className="btn outline" href={quickContactMailtoHref} aria-label="Email Azan Abid about a project">
                 Contact Me <Send size={16} />
-              </button>
+              </a>
             </div>
           </div>
           <div className="hero-visual">
