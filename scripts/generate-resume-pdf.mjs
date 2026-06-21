@@ -244,7 +244,7 @@ let sidebarY = pageHeight - 150
 pdf.text('CONTACT', 24, sidebarY, 12, 'F2', colors.white)
 pdf.wrappedText('azanabidkhawaja@gmail.com', 24, sidebarY - 22, sidebarWidth - 40, 10.5, 'F1', colors.white, 1.3)
 pdf.text('03354414787', 24, sidebarY - 52, 10.5, 'F1', colors.white)
-pdf.text('Chouburji, Lahore', 24, sidebarY - 72, 10.5, 'F1', colors.white)
+pdf.text('Lahore, Pakistan', 24, sidebarY - 72, 10.5, 'F1', colors.white)
 
 sidebarY = pdf.sidebarList('Tools', [
   'Photoshop, Illustrator, Figma, MS Office',

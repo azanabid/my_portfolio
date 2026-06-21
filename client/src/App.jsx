@@ -239,8 +239,8 @@ const portfolioDriveHref = 'https://drive.google.com/drive/folders/15IQtowQuQqzZ
 const fallbackContactEmail = 'azanabidkhawaja@gmail.com'
 const contactPhoneDisplay = '03354414787'
 const contactPhoneHref = 'tel:+923354414787'
-const contactLocationDisplay = 'Chouburji, Lahore'
-const contactLocationHref = 'https://www.google.com/maps/search/?api=1&query=Chouburji%2C+Lahore'
+const contactLocationDisplay = 'Lahore, Pakistan'
+const contactLocationHref = 'https://www.google.com/maps/search/?api=1&query=Lahore%2C+Pakistan'
 
 function scrollToSection(id) {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
@@ -761,7 +761,7 @@ function App() {
                 <a href={contactPhoneHref} aria-label="Call Azan Abid">
                   <Phone size={17} /> {contactPhoneDisplay}
                 </a>
-                <a href={contactLocationHref} target="_blank" rel="noopener noreferrer" aria-label="Open Chouburji Lahore in maps">
+                <a href={contactLocationHref} target="_blank" rel="noopener noreferrer" aria-label="Open Lahore Pakistan in maps">
                   <MapPin size={17} /> {contactLocationDisplay}
                 </a>
               </div>
@@ -830,7 +830,7 @@ function App() {
               <a href={contactPhoneHref} aria-label="Call Azan Abid">
                 <Phone size={15} /> {contactPhoneDisplay}
               </a>
-              <a href={contactLocationHref} target="_blank" rel="noopener noreferrer" aria-label="Open Chouburji Lahore in maps">
+              <a href={contactLocationHref} target="_blank" rel="noopener noreferrer" aria-label="Open Lahore Pakistan in maps">
                 <MapPin size={15} /> {contactLocationDisplay}
               </a>
             </div>
