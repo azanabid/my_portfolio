@@ -229,10 +229,6 @@ const heroButterflies = [
 ]
 
 const visibleHeroButterflies = heroButterflies.slice(0, 12)
-const apiBaseUrl = String(import.meta.env.VITE_API_BASE_URL || '').trim().replace(/\/$/, '')
-const contactDeliveryMode = String(import.meta.env.VITE_CONTACT_DELIVERY || 'api').trim().toLowerCase()
-const useMailtoOnlyContact = contactDeliveryMode === 'mailto'
-const contactApiUrl = apiBaseUrl ? `${apiBaseUrl}/api/contact` : '/api/contact'
 const resumeHref = `${import.meta.env.BASE_URL}azan-resume.pdf`
 const portfolioDriveHref = 'https://drive.google.com/drive/folders/15IQtowQuQqzZyGBiHqMmIXp21TyGHtFY?usp=drive_link'
 const fallbackContactEmail = 'azanabidkhawaja@gmail.com'
@@ -245,38 +241,19 @@ function scrollToSection(id) {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
 }
 
-async function readApiResponse(response) {
-  const payload = await response.text()
-
-  if (!payload) {
-    return { message: response.ok ? 'Your request completed.' : 'The server returned an empty response.' }
-  }
-
-  try {
-    return JSON.parse(payload)
-  } catch {
-    if (payload.trim().startsWith('<')) {
-      return {
-        message: response.ok
-          ? 'Your request completed.'
-          : 'The contact server did not return a valid response. Make sure the backend is running.',
-      }
-    }
-
-    return { message: payload }
-  }
-}
-
 function buildMailtoHref(values, to = fallbackContactEmail) {
   const subject = String(values.subject || '').trim() || 'Portfolio inquiry'
-  const body = [
-    `Name: ${String(values.name || '').trim()}`,
-    `Email: ${String(values.email || '').trim()}`,
-    '',
-    String(values.message || '').trim(),
-  ].join('\n')
+  const bodyLines = []
+  const name = String(values.name || '').trim()
+  const email = String(values.email || '').trim()
+  const message = String(values.message || '').trim()
 
-  return `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(`Portfolio inquiry: ${subject}`)}&body=${encodeURIComponent(body)}`
+  if (name) bodyLines.push(`Name: ${name}`)
+  if (email) bodyLines.push(`Email: ${email}`)
+  if (bodyLines.length && message) bodyLines.push('')
+  if (message) bodyLines.push(message)
+
+  return `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(`Portfolio inquiry: ${subject}`)}&body=${encodeURIComponent(bodyLines.join('\n'))}`
 }
 
 const quickContactMailtoHref = buildMailtoHref({
@@ -286,6 +263,8 @@ const quickContactMailtoHref = buildMailtoHref({
     '',
     'I would like to discuss a design/prototyping project with you.',
     '',
+    'My name:',
+    'My email:',
     'Project details:',
     'Timeline:',
     'Budget:',
@@ -297,10 +276,7 @@ const quickContactMailtoHref = buildMailtoHref({
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [filter, setFilter] = useState('All')
-  const [contactOpen, setContactOpen] = useState(false)
   const [activeProject, setActiveProject] = useState(null)
-  const [sending, setSending] = useState(false)
-  const [notice, setNotice] = useState(null)
 
   const visibleProjects = useMemo(
     () => (filter === 'All' ? projects : projects.filter((project) => project.type === filter)),
@@ -308,12 +284,11 @@ function App() {
   )
 
   useEffect(() => {
-    if (!contactOpen && !activeProject) return undefined
+    if (!activeProject) return undefined
 
     const originalOverflow = document.body.style.overflow
     const handleKeyDown = (event) => {
       if (event.key !== 'Escape') return
-      setContactOpen(false)
       setActiveProject(null)
     }
 
@@ -324,14 +299,7 @@ function App() {
       document.body.style.overflow = originalOverflow
       window.removeEventListener('keydown', handleKeyDown)
     }
-  }, [activeProject, contactOpen])
-
-  function openContact() {
-    setMenuOpen(false)
-    setActiveProject(null)
-    setContactOpen(true)
-    setNotice(null)
-  }
+  }, [activeProject])
 
   function handleNav(link) {
     setMenuOpen(false)
@@ -342,60 +310,6 @@ function App() {
     event.preventDefault()
     setMenuOpen(false)
     scrollToSection('home')
-  }
-
-  async function handleSubmit(event) {
-    event.preventDefault()
-    const form = event.currentTarget
-    const formData = new FormData(form)
-    const submission = Object.fromEntries(formData)
-
-    if (useMailtoOnlyContact) {
-      setNotice({
-        type: 'info',
-        text: 'This production site opens your email app directly for contact submissions.',
-        actionHref: buildMailtoHref(submission),
-        actionLabel: 'Open Email App',
-      })
-      return
-    }
-
-    setSending(true)
-    setNotice(null)
-    try {
-      const response = await fetch(contactApiUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(submission),
-      })
-      const result = await readApiResponse(response)
-      if (!response.ok) throw new Error(result.message || 'Could not send your message.')
-      if (result.delivery === 'fallback') {
-        setNotice({
-          type: 'info',
-          text: result.message,
-          actionHref: result.fallbackMailto || buildMailtoHref(submission),
-          actionLabel: 'Open Email App',
-        })
-      } else {
-        setNotice({ type: 'success', text: result.message })
-        form.reset()
-      }
-    } catch (error) {
-      if (error instanceof TypeError) {
-        setNotice({
-          type: 'info',
-          text: 'The contact server is not reachable right now. Use the email fallback button below.',
-          actionHref: buildMailtoHref(submission),
-          actionLabel: 'Open Email App',
-        })
-      } else {
-        const text = error.message || 'Could not send your message.'
-        setNotice({ type: 'error', text })
-      }
-    } finally {
-      setSending(false)
-    }
   }
 
   return (
@@ -417,9 +331,9 @@ function App() {
             </button>
           ))}
         </nav>
-        <button type="button" className="btn primary header-cta" onClick={openContact}>
+        <a className="btn primary header-cta" href={quickContactMailtoHref} onClick={() => setMenuOpen(false)}>
           Hire Me <Send size={16} />
-        </button>
+        </a>
         <button
           type="button"
           className="menu-toggle"
@@ -779,9 +693,9 @@ function App() {
                   <MapPin size={17} /> {contactLocationDisplay}
                 </a>
               </div>
-              <button type="button" className="btn primary" onClick={openContact}>
+              <a className="btn primary" href={quickContactMailtoHref}>
                 Start a Project <ArrowRight size={16} />
-              </button>
+              </a>
             </article>
 
             <article className="remote-block">
@@ -809,8 +723,8 @@ function App() {
             <div className="socials">
               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><Instagram size={17} /></a>
               <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Linkedin size={17} /></a>
-              <a href="mailto:azanabidkhawaja@gmail.com" aria-label="Email"><Mail size={17} /></a>
-              <button type="button" aria-label="Open contact" onClick={openContact}><Send size={17} /></button>
+              <a href={quickContactMailtoHref} aria-label="Email"><Mail size={17} /></a>
+              <a href={quickContactMailtoHref} aria-label="Email Azan Abid"><Send size={17} /></a>
             </div>
           </div>
 
@@ -852,65 +766,6 @@ function App() {
         </div>
         <div className="copyright">Copyright 2026 Azan. All rights reserved. <Heart size={13} fill="currentColor" /></div>
       </footer>
-
-      {contactOpen && (
-        <div className="overlay" onMouseDown={() => setContactOpen(false)}>
-          <article className="overlay-card contact-modal" onMouseDown={(event) => event.stopPropagation()}>
-            <button
-              type="button"
-              className="modal-close"
-              onClick={() => setContactOpen(false)}
-              aria-label="Close contact form"
-            >
-              <X />
-            </button>
-            <div className="modal-header">
-              <p>Start a project</p>
-              <h2>Send your project brief</h2>
-              <span>Share the project scope, style direction and timeline. I will get back to you soon.</span>
-            </div>
-            <form className="contact-form" onSubmit={handleSubmit}>
-              <div className="form-trap" aria-hidden="true">
-                <label>
-                  Website
-                  <input name="website" tabIndex={-1} autoComplete="off" />
-                </label>
-              </div>
-              <div className="form-row">
-                <label>
-                  Your name
-                  <input name="name" required minLength="2" maxLength="80" placeholder="Your full name" autoComplete="name" />
-                </label>
-                <label>
-                  Email address
-                  <input name="email" required type="email" maxLength="120" placeholder="hello@example.com" autoComplete="email" inputMode="email" />
-                </label>
-              </div>
-              <label>
-                Subject
-                <input name="subject" required minLength="3" maxLength="140" placeholder="What would you like to create?" />
-              </label>
-              <label>
-                Message
-                <textarea name="message" required minLength="10" maxLength="2000" rows="5" placeholder="Tell me about your project..." />
-              </label>
-              {notice && (
-                <div className={`notice ${notice.type}`}>
-                  <p>{notice.text}</p>
-                  {notice.actionHref && (
-                    <a className="notice-action" href={notice.actionHref}>
-                      {notice.actionLabel || 'Open Email'}
-                    </a>
-                  )}
-                </div>
-              )}
-              <button className="btn primary" disabled={sending}>
-                {sending ? 'Sending...' : 'Send Message'} <Send size={16} />
-              </button>
-            </form>
-          </article>
-        </div>
-      )}
 
       {activeProject && (
         <div className="overlay" onMouseDown={() => setActiveProject(null)}>
