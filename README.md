@@ -80,20 +80,26 @@ Production notes:
 
 - build the frontend with `client/.env.production` or the values from `client/.env.production.example`
 - run the server with `NODE_ENV=production`
-- set `ALLOWED_ORIGINS` to your Netlify domain and any custom domain
+- set `ALLOWED_ORIGINS` to your production frontend domain and any custom domain
 - if the frontend and backend are on different hosts, set `VITE_API_BASE_URL` to the backend origin
 
 ## GitHub Pages production deploy
 
 This repo now includes:
 
-- [deploy workflow](C:/Users/HP/Documents/Playground/AZAN-PORTFOLIO/.github/workflows/deploy.yml)
+- `.github/workflows/deploy.yml`
 
-Pushes to `main` will build the Vite frontend and deploy it to GitHub Pages.
+Pushes to `main` build the Vite frontend and publish the static files to the `gh-pages` branch.
 
 Expected production URL:
 
-- `https://khawaja-a.github.io/AZAN-PORTFOLIO/`
+- `https://azanabid.github.io/my_portfolio/`
+
+Repository setting required:
+
+- In `https://github.com/azanabid/my_portfolio/settings/pages`, set the source to `Deploy from a branch`
+- Select branch `gh-pages`
+- Select folder `/root`
 
 GitHub Pages limitation:
 
